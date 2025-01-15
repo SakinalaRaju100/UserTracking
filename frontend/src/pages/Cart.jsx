@@ -1,9 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
 const Cart = () => {
   const [routes, setRoutes] = useState([]);
+
+  const location = useLocation();
+  useEffect(() => {
+    axios.post("http://localhost:5000/api/routes/track", {
+      userId: "raju",
+      application: "Apollo diognostics",
+      routePath: location.pathname,
+      device: "Browser",
+      screen: "Cart",
+      event: "Cart viewed",
+      value: "0",
+    });
+  }, []);
 
   // useEffect(() => {
   //   const fetchRoutes = async () => {
@@ -24,7 +37,7 @@ const Cart = () => {
         ))}
       </ul> */}
       <Link to="/">Go to Home</Link>
-      <Link to="/route-history">Go to Route history</Link> &nbsp;
+      <Link to="/history">Go to History</Link> &nbsp;
       <Link to="/profile">Go to Profile</Link>
     </div>
   );

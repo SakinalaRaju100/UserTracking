@@ -17,16 +17,16 @@ const trackRoute = async (req, res) => {
       console.log("cond", routePath, lastRoute[0]?.routePath);
       if (routePath == lastRoute[0]?.routePath) {
         console.log("last route and current route matched");
-        return res.status(201).send("route already saved");
+        return res.status(201).json("route already saved");
       } else {
-        const route = new Route({ userId, routePath });
+        const route = new Route(req.body);
         await route.save();
-        return res.status(201).send("old user new route saved");
+        return res.status(201).json("old user new route saved");
       }
     } else {
-      const route = new Route({ userId, routePath });
+      const route = new Route(req.body);
       await route.save();
-      return res.status(201).json("new user route saved");
+      return res.status(200).json("new user route saved");
     }
   } catch (error) {
     res.status(500).json({ error: "Server error" });
@@ -35,6 +35,17 @@ const trackRoute = async (req, res) => {
 
 const getUserRoutes = async (req, res) => {
   console.log("get use routes called");
+
+  try {
+    const { userId } = req.params;
+    const routes = await Route.find({ userId });
+    res.status(200).json(routes);
+  } catch (error) {
+    res.status(500).json({ error: "Server error" });
+  }
+};
+const getUserTracks = async (req, res) => {
+  console.log("get user tracks called");
 
   try {
     const { userId } = req.params;

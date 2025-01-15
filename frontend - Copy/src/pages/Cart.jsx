@@ -24,7 +24,7 @@ const Cart = () => {
         ))}
       </ul> */}
       <Link to="/">Go to Home</Link>
-      <Link to="/route-history">Go to Route history</Link> &nbsp;
+      <Link to="/history">Go to Route history</Link> &nbsp;
       <Link to="/profile">Go to Profile</Link>
     </div>
   );

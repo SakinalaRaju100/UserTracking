@@ -20,7 +20,7 @@ const Profile = () => {
     <div>
       <h1>Profile Page</h1>
       <Link to="/">Go to Home</Link> &nbsp;
-      <Link to="/route-history">Go to Route history</Link> &nbsp;
+      <Link to="/history">Go to Route history</Link> &nbsp;
       <Link to="/cart">Go to Cart</Link>
     </div>
   );

@@ -14,8 +14,8 @@ import RouteHistory from "./pages/RouteHistory";
 const RouteTracker = () => {
   const location = useLocation();
   useEffect(() => {
-    // Skip tracking for route-history page
-    if (location.pathname === "/route-history") return;
+    // Skip tracking for history page
+    if (location.pathname === "/history") return;
 
     const userId = "12345"; // Replace with real user ID
     axios.post("http://localhost:5000/api/routes/track", {
@@ -34,7 +34,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/route-history" element={<RouteHistory />} />
+        <Route path="/history" element={<RouteHistory />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>

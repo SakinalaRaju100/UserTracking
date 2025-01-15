@@ -9,32 +9,32 @@ import axios from "axios";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
-import RouteHistory from "./pages/RouteHistory";
+import RouteHistory from "./pages/History";
 
-const RouteTracker = () => {
-  const location = useLocation();
-  useEffect(() => {
-    // Skip tracking for route-history page
-    if (location.pathname === "/route-history") return;
+// const RouteTracker = () => {
+//   const location = useLocation();
+//   useEffect(() => {
+//     // Skip tracking for history page
+//     if (location.pathname === "/history") return;
 
-    const userId = "12345"; // Replace with real user ID
-    axios.post("http://localhost:5000/api/routes/track", {
-      userId,
-      routePath: location.pathname,
-    });
-  }, [location]);
+// const userId = "12345"; // Replace with real user ID
+// axios.post("http://localhost:5000/api/routes/track", {
+//   userId,
+//   routePath: location.pathname,
+// });
+//   }, [location]);
 
-  return null;
-};
+//   return null;
+// };
 
 function App() {
   return (
     <Router>
-      <RouteTracker />
+      {/* <RouteTracker /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/route-history" element={<RouteHistory />} />
+        <Route path="/history" element={<RouteHistory />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </Router>
